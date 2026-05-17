@@ -10,6 +10,7 @@ import {
   Send,
 } from 'lucide-react'
 import './App.css'
+import { githubRepoUrl } from './config'
 import { companies, updatedAt, type Company } from './data/companies'
 
 const statusLabels: Record<Company['active'], string> = {
@@ -76,9 +77,14 @@ function App() {
             具身智能与 Agent 数据服务相关公司。条目基于公开资料整理，建议用于线索发现和交叉验证。
           </p>
           <div className="hero-actions" aria-label="目录操作">
-            <a className="primary-link" href="mailto:submit@example.com?subject=提交公司目录条目">
+            <a
+              className="primary-link"
+              href={`${githubRepoUrl}/pulls`}
+              target="_blank"
+              rel="noreferrer"
+            >
               <Send size={17} />
-              投稿或修正
+              发起 Pull Request
             </a>
             <span className="updated">更新时间：{updatedAt}</span>
           </div>
@@ -222,7 +228,7 @@ function App() {
         {filteredCompanies.length === 0 && (
           <div className="empty-state">
             <h3>没有匹配条目</h3>
-            <p>尝试减少筛选条件，或通过投稿入口补充新的公司线索。</p>
+            <p>尝试减少筛选条件，或通过 Pull Request 补充新的公司线索。</p>
           </div>
         )}
       </section>
