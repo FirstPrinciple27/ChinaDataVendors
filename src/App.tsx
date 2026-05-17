@@ -204,10 +204,14 @@ function App() {
                 </span>
                 <span>创始人：{company.founders.join('、')}</span>
                 <span>来源：{company.source}</span>
-                <a href={company.website} target="_blank" rel="noreferrer">
-                  官网
-                  <ArrowUpRight size={15} />
-                </a>
+                {company.website ? (
+                  <a href={company.website} target="_blank" rel="noreferrer">
+                    官网
+                    <ArrowUpRight size={15} />
+                  </a>
+                ) : (
+                  <span>官网：待补充</span>
+                )}
               </div>
 
               <p className="note">{company.note}</p>
